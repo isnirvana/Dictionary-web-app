@@ -12,7 +12,6 @@
 }
 
 .fa-book {
-  /* font-size: 2.5rem; */
   font-size: 2rem;
   color: var(--secondary);
 }
@@ -53,11 +52,43 @@
   content: "";
   position: absolute;
   padding: 0.5rem;
-  /* left: 0; */
   top: 50%;
   bottom: 50%;
   margin: auto;
   right: 5%;
   border-radius: 50%;
   background-color: var(--text-light);
+}
+
+.search {
+  position: relative;
+}
+
+.button__search,
+#search-input {
+  border: none;
+}
+
+#search-input {
+  /* border: 1px solid green; */
+  background-color: var(--accent-deep);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  width: 20rem;
+  height: 3.8rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+#search-input::placeholder {
+  font-weight: bolder;
+  color: var(--accent);
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  top: 1.4rem;
+  right: 1rem;
+  background-color: transparent;
+  color: var(--primary);
 }
