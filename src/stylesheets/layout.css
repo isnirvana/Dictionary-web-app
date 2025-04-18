@@ -1,0 +1,63 @@
+.settings {
+  display: flex;
+  height: 20%;
+  padding: 2rem;
+  min-width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  min-width: 20%;
+}
+
+.fa-book {
+  /* font-size: 2.5rem; */
+  font-size: 2rem;
+  color: var(--secondary);
+}
+
+.select {
+  display: flex;
+  column-gap: 1rem;
+  /* font-size: 1.5rem; */
+}
+
+.fa-caret-down {
+  color: hsl(274deg, 82%, 60%);
+}
+
+.line {
+  height: 70%;
+  width: 0.05rem;
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.toggle-mode {
+  display: flex;
+  position: relative;
+  background-color: var(--primary);
+  padding: 0.65rem 1.25rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.toggle-mode::before {
+  content: "";
+  position: absolute;
+  padding: 0.5rem;
+  /* left: 0; */
+  top: 50%;
+  bottom: 50%;
+  margin: auto;
+  right: 5%;
+  border-radius: 50%;
+  background-color: var(--text-light);
+}

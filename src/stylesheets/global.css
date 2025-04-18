@@ -1,0 +1,30 @@
+:root {
+  --text-light: #ffffff;
+  --background-dark: #050505;
+  --primary: #a445ed;
+  --secondary: #b05def;
+  --accent: #808080;
+  --text-dark: #000000;
+  --background-light: #fafafa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-dark);
+}
+
+body {
+  display: flex;
+  color: var(--text-light);
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  margin-top: 2%;
+}
