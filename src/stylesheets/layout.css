@@ -1,5 +1,4 @@
 .settings {
-  display: flex;
   height: 20%;
   padding: 2rem 1.5rem;
   min-width: 100vw;
@@ -17,7 +16,6 @@
 }
 
 .select {
-  display: flex;
   column-gap: 1rem;
   /* font-size: 1.5rem; */
 }
@@ -27,20 +25,19 @@
 }
 
 .line {
-  height: 70%;
-  width: 0.05rem;
+  /* height: 70%; */
+  height: 3rem;
+  width: 0.1rem;
   background-color: rgba(128, 128, 128, 0.3);
 }
 
 .toggle {
-  display: flex;
   align-items: center;
   column-gap: 1rem;
   font-size: 1.5rem;
 }
 
 .toggle-mode {
-  display: flex;
   position: relative;
   background-color: var(--primary);
   padding: 0.65rem 1.25rem;
@@ -94,11 +91,12 @@
 }
 
 main {
+  flex-direction: column;
+  row-gap: 2.5rem;
   width: 100%;
 }
 
 .keyword {
-  display: flex;
   justify-content: space-between;
   padding: 0 1.7rem;
   align-items: center;
@@ -106,7 +104,6 @@ main {
 }
 
 .keyword > div {
-  display: flex;
   flex-direction: column;
   row-gap: 1rem;
 }
@@ -121,4 +118,86 @@ main {
 
 .keyword__pronunciation {
   color: var(--primary);
+}
+
+.definitions {
+  padding: 0 2rem;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.definition__part-of-speech {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.definition__part-of-speech::after {
+  content: "";
+  background-color: var(--accent);
+  padding: 0 7rem;
+  height: 0.05rem;
+  margin-left: 2rem;
+  position: absolute;
+  top: 0.7rem;
+}
+
+.definition__meaning-label {
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
+.definition__meaning-list {
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+li {
+  position: relative;
+  margin-left: 1rem;
+  line-height: 1.6;
+  word-spacing: 0.1rem;
+  font-weight: lighter;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  background-color: var(--primary);
+  height: 0.3rem;
+  width: 0.3rem;
+  border-radius: 50%;
+  left: -1rem;
+  top: 0.7rem;
+}
+
+.definition__synonym-label {
+  font-weight: lighter;
+  color: var(--accent);
+}
+
+.definition__synonym-list {
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.definition__synonym-list li {
+  color: var(--primary);
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.definition__synonym-list li::before,
+.definition__source-url::before {
+  content: none;
+  display: nones;
+}
+
+.definition__example {
+  color: var(--accent);
+}
+
+.definition__source-url {
+  margin: 0;
+  margin-bottom: 2rem;
 }

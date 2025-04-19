@@ -1,0 +1,31 @@
+.settings,
+.select,
+.toggle,
+.toggle-mode,
+main,
+.keyword,
+.keyword > div,
+.definitions,
+.definition__meaning-list,
+.definition__synonym-list {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+}
+
+.heading--2 {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+hr {
+  height: 0.01rem;
+  border: 0.5px solid var(--accent-deep);
+}
