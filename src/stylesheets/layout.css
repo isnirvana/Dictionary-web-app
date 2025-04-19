@@ -1,7 +1,7 @@
 .settings {
   display: flex;
   height: 20%;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   min-width: 100vw;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +12,7 @@
 }
 
 .fa-book {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--secondary);
 }
 
@@ -74,7 +74,7 @@
   background-color: var(--accent-deep);
   border-radius: 0.9rem;
   padding: 1rem;
-  width: 20rem;
+  width: 20.7rem;
   height: 3.8rem;
   font-size: 1.05rem;
   color: var(--text);
@@ -90,5 +90,35 @@
   top: 1.4rem;
   right: 1rem;
   background-color: transparent;
+  color: var(--primary);
+}
+
+main {
+  width: 100%;
+}
+
+.keyword {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.7rem;
+  align-items: center;
+  font-size: 1.06rem;
+}
+
+.keyword > div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.fa-play {
+  color: var(--primary);
+  font-size: 1.8rem;
+  background-color: rgb(var(--primary-rgb), 0.2);
+  padding: 1.5rem 1.6rem 1.5rem 1.85rem;
+  border-radius: 50%;
+}
+
+.keyword__pronunciation {
   color: var(--primary);
 }
