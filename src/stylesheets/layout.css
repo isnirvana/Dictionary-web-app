@@ -142,7 +142,7 @@ main {
 }
 
 .definition__meaning-label {
-  font-weight: lighter;
+  /* font-weight: lighter; */
   font-size: 1rem;
 }
 
@@ -156,7 +156,7 @@ li {
   margin-left: 1rem;
   line-height: 1.6;
   word-spacing: 0.1rem;
-  font-weight: lighter;
+  /* font-weight: lighter; */
 }
 
 li::before {
@@ -171,7 +171,7 @@ li::before {
 }
 
 .definition__synonym-label {
-  font-weight: lighter;
+  /* font-weight: lighter; */
   color: var(--accent);
 }
 

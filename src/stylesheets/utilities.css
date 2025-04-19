@@ -22,7 +22,7 @@ li {
 
 a {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 hr {
