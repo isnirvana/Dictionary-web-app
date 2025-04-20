@@ -11,91 +11,93 @@
     <script src="./scripts/app.js" defer></script>
     <title>Dictionary</title>
   </head>
-  <body>
-    <header>
-      <div class="settings">
-        <span class="logo">
-          <i class="fa-solid fa-book"></i>
-        </span>
-        <div class="select">
-          <div class="selct__font">
-            <span>Sans Serif</span>
+  <div class="body-container">
+    <body>
+      <header>
+        <div class="settings">
+          <span class="logo">
+            <i class="fa-solid fa-book"></i>
+          </span>
+          <div class="select">
+            <div class="selct__font">
+              <span>Sans Serif</span>
+            </div>
+            <div class="dropdown">
+              <i class="fa-solid fa-caret-down"></i>
+            </div>
           </div>
-          <div class="dropdown">
-            <i class="fa-solid fa-caret-down"></i>
+          <div class="line"></div>
+          <div class="toggle">
+            <div class="toggle-mode"></div>
+            <i class="fa-solid fa-moon"></i>
           </div>
         </div>
-        <div class="line"></div>
-        <div class="toggle">
-          <div class="toggle-mode"></div>
-          <i class="fa-solid fa-moon"></i>
+        <div class="search">
+          <button class="button__search">
+            <input
+              autofocus
+              type="text"
+              id="search-input"
+              placeholder="Search for any word..."
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
-      </div>
-      <div class="search">
-        <button class="button__search">
-          <input
-            autofocus
-            type="text"
-            id="search-input"
-            placeholder="Search for any word..."
-          />
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </header>
-    <main>
-      <div class="keyword">
-        <div>
-          <h1 class="keyword__word">keyboard</h1>
-          <p class="keyword__pronunciation">/ˈkiːbɔːd/</p>
-        </div>
-        <div class="play-icon">
-          <i class="fa-solid fa-play"></i>
-        </div>
-      </div>
-      <div class="definitions">
-        <h2 class="definition__part-of-speech heading--2">noun</h2>
-        <h3 class="definition__meaning-label">Meaning</h3>
-        <ul class="definition__meaning-list">
-          <li>
-            (etc.) A set of keys used to operate a typewriter, computer etc.
-          </li>
-          <li>
-            A component of many instruments including the piano, organ, and
-            harpsichord consisting of usually black and white keys that cause
-            different tones to be produced when struck.
-          </li>
-          <li>
-            A device with keys of a musical keyboard, used to control electronic
-            sound-producing devices which may be built into or separate from the
-            keyboard device.
-          </li>
+      </header>
+      <main>
+        <div class="keyword">
           <div>
-            <ul class="definition__synonym-list">
-              <h3 class="definition__synonym-label">Synonym</h3>
-              <li>electronic</li>
-              <li>keyboard</li>
-            </ul>
+            <h1 class="keyword__word">keyboard</h1>
+            <p class="keyword__pronunciation">/ˈkiːbɔːd/</p>
           </div>
-        </ul>
-        <h2 class="definition__part-of-speech heading--2">verb</h2>
-        <h3 class="definition__meaning-label">Meaning</h3>
-        <ul class="definition__meaning-list">
-          <li>
-            <p class="definition__text">To type on a computer keyboard</p>
-            <p class="definition__example">
-              Keyboarding is the part of this job I hate the most.
-            </p>
-          </li>
-        </ul>
-        <hr />
-        <h4 class="definition__source-label">Source</h4>
-        <ul class="definition__source-list">
-          <li class="definition__source-url">
-            <a href="#">https://en.wiktionary.org/wiki/keyboard</a>
-          </li>
-        </ul>
-      </div>
-    </main>
-  </body>
+          <div class="play-icon">
+            <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+        <div class="definitions">
+          <h2 class="definition__part-of-speech heading--2">noun</h2>
+          <h3 class="definition__meaning-label">Meaning</h3>
+          <ul class="definition__meaning-list">
+            <li>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+            <li>
+              A component of many instruments including the piano, organ, and
+              harpsichord consisting of usually black and white keys that cause
+              different tones to be produced when struck.
+            </li>
+            <li>
+              A device with keys of a musical keyboard, used to control
+              electronic sound-producing devices which may be built into or
+              separate from the keyboard device.
+            </li>
+            <div>
+              <ul class="definition__synonym-list">
+                <h3 class="definition__synonym-label">Synonym</h3>
+                <li>electronic</li>
+                <li>keyboard</li>
+              </ul>
+            </div>
+          </ul>
+          <h2 class="definition__part-of-speech heading--2">verb</h2>
+          <h3 class="definition__meaning-label">Meaning</h3>
+          <ul class="definition__meaning-list">
+            <li>
+              <p class="definition__text">To type on a computer keyboard</p>
+              <p class="definition__example">
+                Keyboarding is the part of this job I hate the most.
+              </p>
+            </li>
+          </ul>
+          <hr />
+          <h4 class="definition__source-label">Source</h4>
+          <ul class="definition__source-list">
+            <li class="definition__source-url">
+              <a href="#">https://en.wiktionary.org/wiki/keyboard</a>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </body>
+  </div>
 </html>

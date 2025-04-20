@@ -1,0 +1,54 @@
+@media only screen and (min-width: 600px) {
+  .body-container {
+    width: 45vw;
+  }
+
+  .logo {
+    min-width: 60%;
+  }
+
+  .fa-book {
+    font-size: 3rem;
+  }
+
+  header {
+    margin-top: 5%;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  #search-input {
+    min-width: 100%;
+  }
+
+  .keyword {
+    padding: 0;
+    font-size: 2rem;
+  }
+
+  .keyword__pronunciation {
+    font-size: 1.5rem;
+  }
+
+  .definitions {
+    padding: 0;
+    font-size: 1.2rem;
+  }
+
+  .definition__part-of-speech {
+    font-size: 1.5rem;
+  }
+
+  .definition__part-of-speech::after {
+    padding: 0 45%;
+  }
+
+  .definition__meaning-label {
+    /* font-weight: lighter; */
+    /* font-size: 1rem; */
+    font-size: 1.5rem;
+    /* all: initial; */
+  }
+}
