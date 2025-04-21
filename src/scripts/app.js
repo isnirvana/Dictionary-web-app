@@ -2,6 +2,8 @@ import { fetchData } from "./fetchData"
 
 const input = document.getElementById("search-input")
 const main = document.querySelector("main")
+const body = document.querySelector("body")
+const toggle = document.querySelector(".toggle-mode")
 
 function sendParams(inputValue) {
   let url = getPageURL()
@@ -107,4 +109,16 @@ input.addEventListener("keydown", (e) => {
   sendParams(inputValue)
   console.log(inputValue)
   input.value = ""
+})
+
+toggle.addEventListener("click", () => {
+  if (!toggle.classList.contains("light")) {
+    toggle.classList.add("light")
+    input.classList.add("light")
+    body.classList.add("light")
+  } else {
+    toggle.classList.remove("light")
+    input.classList.remove("light")
+    body.classList.remove("light")
+  }
 })

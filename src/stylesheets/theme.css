@@ -1,0 +1,17 @@
+body.light {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+}
+
+.fa-moon.light {
+  color: var(--text-dark);
+}
+
+#search-input.light {
+  background-color: rgb(224, 221, 221);
+  color: var(--text-dark);
+}
+
+.toggle-mode.light::before {
+  transform: translate(-105%);
+}
