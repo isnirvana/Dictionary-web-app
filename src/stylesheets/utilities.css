@@ -26,6 +26,7 @@ a {
 }
 
 hr {
+  margin-top: 2rem;
   height: 0.01rem;
   border: 0.5px solid var(--accent-deep);
 }
