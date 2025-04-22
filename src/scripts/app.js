@@ -8,6 +8,19 @@ const fonts = document.querySelector(".fonts")
 const playIcon = document.querySelector(".play-icon")
 const fontSelect = document.querySelector(".select")
 
+let isLightMode = false
+
+function loadFromLocalStorage() {
+  const theme = getFromLocalStorage("theme")
+  const themejson = JSON.parse(theme)
+
+  if (themejson) {
+    toggleFuction()
+  }
+}
+
+loadFromLocalStorage()
+
 function sendParams(inputValue) {
   let url = getPageURL()
   url.searchParams.set("id", `${inputValue}`)
@@ -111,6 +124,14 @@ function createElement(element) {
   return document.createElement(element)
 }
 
+function saveToLocalStorage(key, item) {
+  return localStorage.setItem(key, item)
+}
+
+function getFromLocalStorage(key) {
+  return localStorage.getItem(key)
+}
+
 input.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return
   const inputValue = input.value
@@ -118,13 +139,23 @@ input.addEventListener("keydown", (e) => {
   input.value = ""
 })
 
-toggle.addEventListener("click", () => {
+toggle.addEventListener("click", toggleFuction)
+
+function toggleFuction() {
   const elements = [toggle, input, body, fonts]
 
   elements.forEach((element) => {
     element.classList.toggle("light")
   })
-})
+
+  if (body.classList.contains("light")) {
+    isLightMode = true
+    localStorage.setItem("theme", JSON.stringify(isLightMode))
+  } else {
+    isLightMode = false
+    localStorage.setItem("theme", JSON.stringify(isLightMode))
+  }
+}
 playIcon.addEventListener("click", async () => {
   const data = await getData()
   const audio = document.querySelector(".audio")
