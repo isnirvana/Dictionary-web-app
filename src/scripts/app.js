@@ -4,7 +4,9 @@ const input = document.getElementById("search-input")
 const main = document.querySelector("main")
 const body = document.querySelector("body")
 const toggle = document.querySelector(".toggle-mode")
+const fonts = document.querySelector(".fonts")
 const playIcon = document.querySelector(".play-icon")
+const fontSelect = document.querySelector(".select")
 
 function sendParams(inputValue) {
   let url = getPageURL()
@@ -117,17 +119,12 @@ input.addEventListener("keydown", (e) => {
 })
 
 toggle.addEventListener("click", () => {
-  if (!toggle.classList.contains("light")) {
-    toggle.classList.add("light")
-    input.classList.add("light")
-    body.classList.add("light")
-  } else {
-    toggle.classList.remove("light")
-    input.classList.remove("light")
-    body.classList.remove("light")
-  }
-})
+  const elements = [toggle, input, body, fonts]
 
+  elements.forEach((element) => {
+    element.classList.toggle("light")
+  })
+})
 playIcon.addEventListener("click", async () => {
   const data = await getData()
   const audio = document.querySelector(".audio")
@@ -146,6 +143,42 @@ playIcon.addEventListener("click", async () => {
     alert("There is no audio for this word")
   }
   console.log(audioURL)
+})
+
+fontSelect.addEventListener("click", (e) => {
+  const currentFont = document.querySelector(".current-font")
+  const fontTypes = ["sans-serif", "serif", "monospace"]
+  const target = e.target
+
+  if (
+    target.classList.contains("current-font") ||
+    target.classList.contains("fa-caret-down")
+  ) {
+    fonts.classList.toggle("show")
+  }
+
+  const fontFamily = document.querySelectorAll(".font")
+
+  fontTypes.forEach((type) => {
+    if (target.classList.contains(type)) {
+      fontFamily.forEach((font) => {
+        font.classList.remove("selected")
+      })
+      target.classList.add("selected")
+      currentFont.textContent = target.textContent
+      body.style.fontFamily = type
+      fonts.classList.remove("show")
+    }
+  })
+})
+
+document.addEventListener("click", (e) => {
+  const closest = e.target.closest(".select")
+
+  if (closest) return
+  if (fonts.classList.contains("show")) {
+    fonts.classList.remove("show")
+  }
 })
 
 getData()
