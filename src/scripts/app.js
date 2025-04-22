@@ -28,6 +28,10 @@ async function renderOnPage() {
 
   const keyword = document.querySelector(".keyword__word")
   const phonetic = document.querySelector(".keyword__pronunciation")
+  const loader = document.querySelector(".loader")
+
+  loader.style.display = "none"
+  main.style.display = "flex"
 
   keyword.textContent = data[0].word
   phonetic.textContent = data[0].phonetic
@@ -109,7 +113,6 @@ input.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return
   const inputValue = input.value
   sendParams(inputValue)
-  console.log(inputValue)
   input.value = ""
 })
 
