@@ -4,6 +4,7 @@ const input = document.getElementById("search-input")
 const main = document.querySelector("main")
 const body = document.querySelector("body")
 const toggle = document.querySelector(".toggle-mode")
+const playIcon = document.querySelector(".play-icon")
 
 function sendParams(inputValue) {
   let url = getPageURL()
@@ -17,7 +18,7 @@ async function getData() {
   const data = await fetchData(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
   )
-  console.log(pageURL.host)
+  console.log(data)
 
   return data
 }
@@ -44,7 +45,7 @@ async function renderOnPage() {
     </ul>
     <div>
       <ul class="definition__synonym-list">
-        <h3 class="definition__synonym-label">Synonym</h3>
+        <h3 class="definition__synonym-label">Synonym: </h3>
       </ul>
     </div>
     <hr />
@@ -73,6 +74,7 @@ async function renderOnPage() {
         ul.appendChild(list)
       })
     })
+
     meaning.synonyms.forEach((synonym, index) => {
       if (index < 2) {
         const SynonymContainer = document.querySelectorAll(
@@ -122,3 +124,25 @@ toggle.addEventListener("click", () => {
     body.classList.remove("light")
   }
 })
+
+playIcon.addEventListener("click", async () => {
+  const data = await getData()
+  const audio = document.querySelector(".audio")
+  const phonetics = data[0].phonetics
+  let audioURL
+  phonetics.forEach((sound) => {
+    if (sound.audio) {
+      audioURL = sound.audio
+    }
+  })
+
+  if (audioURL) {
+    audio.src = audioURL
+    await audio.play()
+  } else {
+    alert("There is no audio for this word")
+  }
+  console.log(audioURL)
+})
+
+getData()

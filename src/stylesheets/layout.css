@@ -126,6 +126,10 @@ main {
   color: var(--primary);
 }
 
+audio {
+  display: none;
+}
+
 .definitions {
   padding: 0 2rem;
   flex-direction: column;
