@@ -7,13 +7,32 @@ const toggle = document.querySelector(".toggle-mode")
 const fonts = document.querySelector(".fonts")
 const playIcon = document.querySelector(".play-icon")
 const fontSelect = document.querySelector(".select")
+const currentFont = document.querySelector(".current-font")
+const fontFamily = document.querySelectorAll(".font")
 
 let isLightMode = false
 
 function loadFromLocalStorage() {
   const theme = getFromLocalStorage("theme")
-  const themejson = JSON.parse(theme)
+  const font = getFromLocalStorage("font")
 
+  const fontjson = JSON.parse(font) || "sans-serif"
+  const themejson = JSON.parse(theme) || false
+
+  if (fontjson) {
+    fontFamily.forEach((font) => {
+      font.classList.remove("selected")
+      if (font.classList.contains(fontjson)) {
+        font.classList.add("selected")
+      }
+    })
+    body.style.fontFamily = fontjson
+    if (fontjson === "sans-serif") {
+      currentFont.textContent = "Sans Serif"
+    } else {
+      currentFont.textContent = "Serif"
+    }
+  }
   if (themejson) {
     toggleFuction()
   }
@@ -28,35 +47,40 @@ function sendParams(inputValue) {
 }
 
 async function getData() {
-  let pageURL = getPageURL()
-  const keyword = pageURL.searchParams.get("id")
-  const data = await fetchData(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
-  )
-  console.log(data)
+  try {
+    let pageURL = getPageURL()
+    const keyword = pageURL.searchParams.get("id")
+    const data = await fetchData(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`
+    )
+    console.log(data)
 
-  return data
+    return data
+  } catch (error) {
+    console.log("I can't get")
+  }
 }
 
 async function renderOnPage() {
-  const data = await getData()
+  try {
+    const data = await getData()
 
-  const keyword = document.querySelector(".keyword__word")
-  const phonetic = document.querySelector(".keyword__pronunciation")
-  const loader = document.querySelector(".loader")
+    const keyword = document.querySelector(".keyword__word")
+    const phonetic = document.querySelector(".keyword__pronunciation")
+    const loader = document.querySelector(".loader")
 
-  loader.style.display = "none"
-  main.style.display = "flex"
+    loader.style.display = "none"
+    main.style.display = "flex"
 
-  keyword.textContent = data[0].word
-  phonetic.textContent = data[0].phonetic
+    keyword.textContent = data[0].word
+    phonetic.textContent = data[0].phonetic
 
-  const definition = data[0].meanings
+    const definition = data[0].meanings
 
-  definition.forEach((meaning) => {
-    const el = createElement("div")
+    definition.forEach((meaning) => {
+      const el = createElement("div")
 
-    el.innerHTML = `
+      el.innerHTML = `
     <h2 class="definition__part-of-speech heading--2">${meaning.partOfSpeech}</h2>
     <h3 class="definition__meaning-label">Meaning</h3>
     <ul class="definition__meaning-list ${meaning.partOfSpeech}">
@@ -76,42 +100,45 @@ async function renderOnPage() {
     </ul>
   `
 
-    const partOfSpeech = document.querySelector(".definitions")
+      const partOfSpeech = document.querySelector(".definitions")
 
-    partOfSpeech.appendChild(el)
-    meaning.definitions.forEach((text) => {
-      const uls = document.querySelectorAll(`.${meaning.partOfSpeech}`)
+      partOfSpeech.appendChild(el)
+      meaning.definitions.forEach((text) => {
+        const uls = document.querySelectorAll(`.${meaning.partOfSpeech}`)
 
-      uls.forEach((ul) => {
-        const list = createElement("li")
-        list.innerHTML = `
+        uls.forEach((ul) => {
+          const list = createElement("li")
+          list.innerHTML = `
         ${text.definition}
         <p class="definition__example">
          ${text.example || ""}
         </p>
         `
-        ul.appendChild(list)
+          ul.appendChild(list)
+        })
       })
-    })
 
-    meaning.synonyms.forEach((synonym, index) => {
-      if (index < 2) {
-        const SynonymContainer = document.querySelectorAll(
-          ".definition__synonym-list"
-        )
+      meaning.synonyms.forEach((synonym, index) => {
+        if (index < 2) {
+          const SynonymContainer = document.querySelectorAll(
+            ".definition__synonym-list"
+          )
 
-        SynonymContainer.forEach((item) => {
-          const url = getPageURL()
-          url.searchParams.set("id", `${synonym}`)
-          const list = createElement("li")
-          list.innerHTML = `
+          SynonymContainer.forEach((item) => {
+            const url = getPageURL()
+            url.searchParams.set("id", `${synonym}`)
+            const list = createElement("li")
+            list.innerHTML = `
           <a href="${url}">${synonym}</a>
           `
-          item.appendChild(list)
-        })
-      }
+            item.appendChild(list)
+          })
+        }
+      })
     })
-  })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 renderOnPage()
@@ -150,10 +177,10 @@ function toggleFuction() {
 
   if (body.classList.contains("light")) {
     isLightMode = true
-    localStorage.setItem("theme", JSON.stringify(isLightMode))
+    saveToLocalStorage("theme", JSON.stringify(isLightMode))
   } else {
     isLightMode = false
-    localStorage.setItem("theme", JSON.stringify(isLightMode))
+    saveToLocalStorage("theme", JSON.stringify(isLightMode))
   }
 }
 playIcon.addEventListener("click", async () => {
@@ -177,7 +204,6 @@ playIcon.addEventListener("click", async () => {
 })
 
 fontSelect.addEventListener("click", (e) => {
-  const currentFont = document.querySelector(".current-font")
   const fontTypes = ["sans-serif", "serif", "monospace"]
   const target = e.target
 
@@ -188,8 +214,6 @@ fontSelect.addEventListener("click", (e) => {
     fonts.classList.toggle("show")
   }
 
-  const fontFamily = document.querySelectorAll(".font")
-
   fontTypes.forEach((type) => {
     if (target.classList.contains(type)) {
       fontFamily.forEach((font) => {
@@ -199,6 +223,7 @@ fontSelect.addEventListener("click", (e) => {
       currentFont.textContent = target.textContent
       body.style.fontFamily = type
       fonts.classList.remove("show")
+      saveToLocalStorage("font", JSON.stringify(type))
     }
   })
 })

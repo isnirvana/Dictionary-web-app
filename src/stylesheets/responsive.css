@@ -21,6 +21,14 @@
     margin-top: 5%;
   }
 
+  .toggle-mode.light {
+    transition: all 0.25s ease;
+  }
+
+  .toggle-mode.light:hover {
+    background-color: var(--primary);
+  }
+
   .search {
     width: 100%;
   }

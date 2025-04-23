@@ -12,6 +12,10 @@ body.light {
   color: var(--text-dark);
 }
 
+.toggle-mode.light {
+  background-color: var(--accent);
+}
+
 .toggle-mode.light::before {
   transform: translate(-105%);
 }
