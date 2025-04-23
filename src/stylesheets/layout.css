@@ -241,6 +241,10 @@ li::before {
   /* text-decoration: underline; */
 }
 
+.definition__synonym-list {
+  overflow-x: hidden;
+}
+
 .definition__source-label {
   margin-top: 2rem;
 }
