@@ -1,5 +1,6 @@
 import { fetchData } from "./fetchData"
 
+const searchButton = document.querySelector(".fa-magnifying-glass")
 const input = document.getElementById("search-input")
 const main = document.querySelector("main")
 const body = document.querySelector("body")
@@ -159,12 +160,18 @@ function getFromLocalStorage(key) {
   return localStorage.getItem(key)
 }
 
-input.addEventListener("keydown", (e) => {
+input.addEventListener("keydown", (e) => search(e))
+
+function search(e) {
   if (e.key !== "Enter") return
-  const inputValue = input.value
+
+  if (!input.value.trim()) {
+    alert("Please type word...")
+  }
+  const inputValue = input.value.trim()
   sendParams(inputValue)
   input.value = ""
-})
+}
 
 toggle.addEventListener("click", toggleFuction)
 
@@ -234,6 +241,15 @@ document.addEventListener("click", (e) => {
   if (closest) return
   if (fonts.classList.contains("show")) {
     fonts.classList.remove("show")
+  }
+
+  if (e.target.classList.contains("fa-magnifying-glass")) {
+    if (!input.value.trim()) {
+      alert("Please type word...")
+    }
+    const inputValue = input.value.trim()
+    sendParams(inputValue)
+    input.value = ""
   }
 })
 
