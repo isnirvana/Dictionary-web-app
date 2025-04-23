@@ -129,7 +129,7 @@
 main {
   flex-direction: column;
   row-gap: 2.5rem;
-  width: 100%;
+  width: 100vw;
   display: none;
 }
 
@@ -243,6 +243,10 @@ li::before {
 
 .definition__source-label {
   margin-top: 2rem;
+}
+
+.definition__source-list {
+  overflow-x: hidden;
 }
 
 .definition__source-url {
